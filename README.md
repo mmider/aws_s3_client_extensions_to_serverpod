@@ -62,7 +62,7 @@ class MyEndpoint extends Endpoint {
         Session session, {
         String directory,
         bool public = true
-    }){
+    }) async {
         final result = await awsS3ClientExtension.listObjects(
             bucketId: awsS3ClientExtension.buckets[public ? 'public' : 'private']!,
             prefix: directory,
