@@ -15,7 +15,7 @@ class CopyObjectResult {
   final String? checksumCRC32C;
   @JsonKey(name: 'ChecksumSHA1')
   final String? checksumSHA1;
-  // @NullableIntConverter()
+  @NullableIntConverter()
   @JsonKey(name: 'ChecksumSHA256')
   final int? checksumSHA256;
 
@@ -30,6 +30,8 @@ class CopyObjectResult {
 
   factory CopyObjectResult.fromJson(Map<String, Object?> json) =>
       _$CopyObjectResultFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CopyObjectResultToJson(this);
 
   static CopyObjectResult? fromJsonParker(Map<String, dynamic> json) {
     if (json['CopyObjectResult'] == null) {

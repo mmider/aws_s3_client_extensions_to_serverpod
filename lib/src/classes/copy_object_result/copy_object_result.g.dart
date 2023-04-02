@@ -15,7 +15,8 @@ CopyObjectResult _$CopyObjectResultFromJson(Map<String, dynamic> json) =>
       checksumCRC32: json['ChecksumCRC32'] as String?,
       checksumCRC32C: json['ChecksumCRC32C'] as String?,
       checksumSHA1: json['ChecksumSHA1'] as String?,
-      checksumSHA256: json['ChecksumSHA256'] as int?,
+      checksumSHA256: const NullableIntConverter()
+          .fromJson(json['ChecksumSHA256'] as String?),
     );
 
 Map<String, dynamic> _$CopyObjectResultToJson(CopyObjectResult instance) =>
@@ -25,5 +26,6 @@ Map<String, dynamic> _$CopyObjectResultToJson(CopyObjectResult instance) =>
       'ChecksumCRC32': instance.checksumCRC32,
       'ChecksumCRC32C': instance.checksumCRC32C,
       'ChecksumSHA1': instance.checksumSHA1,
-      'ChecksumSHA256': instance.checksumSHA256,
+      'ChecksumSHA256':
+          const NullableIntConverter().toJson(instance.checksumSHA256),
     };
