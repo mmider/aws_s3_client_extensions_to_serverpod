@@ -1,21 +1,32 @@
 import 'package:aws_s3_client_extensions_to_serverpod/src/converters/nullable_int_converter.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-part 'copy_object_result.freezed.dart';
 part 'copy_object_result.g.dart';
 
-@freezed
-class CopyObjectResult with _$CopyObjectResult {
-  const factory CopyObjectResult({
-    @JsonKey(name: 'ETag') String? eTag,
-    @JsonKey(name: 'LastModified') DateTime? lastModified,
-    @JsonKey(name: 'ChecksumCRC32') String? checksumCRC32,
-    @JsonKey(name: 'ChecksumCRC32C') String? checksumCRC32C,
-    @JsonKey(name: 'ChecksumSHA1') String? checksumSHA1,
-    @NullableIntConverter()
-    @JsonKey(name: 'ChecksumSHA256')
-        int? checksumSHA256,
-  }) = _CopyObjectResult;
+@JsonSerializable()
+class CopyObjectResult {
+  @JsonKey(name: 'ETag')
+  final String? eTag;
+  @JsonKey(name: 'LastModified')
+  final DateTime? lastModified;
+  @JsonKey(name: 'ChecksumCRC32')
+  final String? checksumCRC32;
+  @JsonKey(name: 'ChecksumCRC32C')
+  final String? checksumCRC32C;
+  @JsonKey(name: 'ChecksumSHA1')
+  final String? checksumSHA1;
+  // @NullableIntConverter()
+  @JsonKey(name: 'ChecksumSHA256')
+  final int? checksumSHA256;
+
+  const CopyObjectResult({
+    this.eTag,
+    this.lastModified,
+    this.checksumCRC32,
+    this.checksumCRC32C,
+    this.checksumSHA1,
+    this.checksumSHA256,
+  });
 
   factory CopyObjectResult.fromJson(Map<String, Object?> json) =>
       _$CopyObjectResultFromJson(json);

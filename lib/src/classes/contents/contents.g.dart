@@ -6,7 +6,7 @@ part of 'contents.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Contents _$$_ContentsFromJson(Map<String, dynamic> json) => _$_Contents(
+Contents _$ContentsFromJson(Map<String, dynamic> json) => Contents(
       eTag: json['ETag'] as String?,
       key: json['Key'] as String?,
       lastModified: json['LastModified'] == null
@@ -19,8 +19,7 @@ _$_Contents _$$_ContentsFromJson(Map<String, dynamic> json) => _$_Contents(
       storageClass: json['StorageClass'] as String?,
     );
 
-Map<String, dynamic> _$$_ContentsToJson(_$_Contents instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ContentsToJson(Contents instance) => <String, dynamic>{
       'ETag': instance.eTag,
       'Key': instance.key,
       'LastModified': instance.lastModified?.toIso8601String(),

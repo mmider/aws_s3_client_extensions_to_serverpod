@@ -119,13 +119,14 @@ class FormattedSignedParams {
     required String datetime,
     required String? sessionToken,
   }) {
-    final allSignedParams =
-        Map<String, String>.from(signedParams ?? <String, String>{});
     // let's add signed parameters that must always be present
-    allSignedParams['host'] = host;
-    allSignedParams['x-amz-content-sha256'] = payload;
-    allSignedParams['x-amz-date'] = datetime;
-    allSignedParams['x-amz-security-token'] = sessionToken ?? "";
+    Map<String, String> allSignedParams = {
+      'host': host,
+      'x-amz-content-sha256': payload,
+      'x-amz-date': datetime,
+      'x-amz-security-token': sessionToken ?? "",
+      if (signedParams != null) ...signedParams,
+    };
 
     final keys = allSignedParams.keys.toList()..sort();
     mapped = keys.map((p) => '$p:${allSignedParams[p]}').join('\n');

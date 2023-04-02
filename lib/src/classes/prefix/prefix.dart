@@ -1,13 +1,15 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-part 'prefix.freezed.dart';
 part 'prefix.g.dart';
 
-@freezed
-class Prefix with _$Prefix {
-  const factory Prefix({
-    @JsonKey(name: 'Prefix') required String prefix,
-  }) = _Prefix;
+@JsonSerializable()
+class Prefix {
+  @JsonKey(name: 'Prefix')
+  final String prefix;
+  const Prefix({
+    required this.prefix,
+  });
 
   factory Prefix.fromJson(Map<String, Object?> json) => _$PrefixFromJson(json);
+  Map<String, dynamic> toJson() => _$PrefixToJson(this);
 }

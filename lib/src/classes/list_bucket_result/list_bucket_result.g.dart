@@ -6,8 +6,8 @@ part of 'list_bucket_result.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ListBucketResult _$$_ListBucketResultFromJson(Map<String, dynamic> json) =>
-    _$_ListBucketResult(
+ListBucketResult _$ListBucketResultFromJson(Map<String, dynamic> json) =>
+    ListBucketResult(
       isTruncated:
           const BoolConverter().fromJson(json['IsTruncated'] as String),
       contents: (json['Contents'] as List<dynamic>?)
@@ -31,10 +31,10 @@ _$_ListBucketResult _$$_ListBucketResultFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_ListBucketResultToJson(_$_ListBucketResult instance) =>
+Map<String, dynamic> _$ListBucketResultToJson(ListBucketResult instance) =>
     <String, dynamic>{
       'IsTruncated': const BoolConverter().toJson(instance.isTruncated),
-      'Contents': instance.contents.map((e) => e.toJson()).toList(),
+      'Contents': instance.contents,
       'Name': instance.name,
       'Prefix': instance.prefix,
       'Delimiter': instance.delimiter,
@@ -44,5 +44,5 @@ Map<String, dynamic> _$$_ListBucketResultToJson(_$_ListBucketResult instance) =>
       'ContinuationToken': instance.continuationToken,
       'NextContinuationToken': instance.nextContinuationToken,
       'StartAfter': instance.startAfter,
-      'CommonPrefixes': instance.commonPrefixes.map((e) => e.toJson()).toList(),
+      'CommonPrefixes': instance.commonPrefixes,
     };
