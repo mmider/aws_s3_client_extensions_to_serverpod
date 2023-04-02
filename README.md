@@ -2,7 +2,7 @@ An extension to standard functionality of [Serverpod's](https://github.com/serve
 
 ## Features
 
-Standard [CloudStorage](https://github.com/serverpod/serverpod/blob/70473726427c4989ef0506473c08412a97cff80e/packages/serverpod/lib/src/cloud_storage/cloud_storage.dart) defines only the most basic of API calls to providers of cloud services. This package exposes some additional REST API calls to AWS, such as:
+Standard [CloudStorage](https://github.com/serverpod/serverpod/blob/70473726427c4989ef0506473c08412a97cff80e/packages/serverpod/lib/src/cloud_storage/cloud_storage.dart) defines only the most basic of REST API actions to providers of cloud services. This package exposes some additional AWS S3 REST API actions, such as:
 
 - list bucket contents
 - copy object
