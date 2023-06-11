@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:aws_s3_client_extensions_to_serverpod/src/aws_s3_request_builder.dart';
 import 'package:aws_s3_client_extensions_to_serverpod/src/classes/copy_object_result/copy_object_result.dart';
 import 'package:aws_s3_client_extensions_to_serverpod/src/classes/list_bucket_result/list_bucket_result.dart';
-import 'package:aws_s3_client_extensions_to_serverpod/src/exceptions.dart';
-import 'package:aws_s3_client_extensions_to_serverpod/src/utils.dart';
+import 'package:aws_s3_client_extensions_to_serverpod/src/exceptions/s3_exceptions.dart';
+import 'package:aws_s3_client_extensions_to_serverpod/src/utils/encode_uri.dart';
 import 'package:http/http.dart';
 import 'package:serverpod/serverpod.dart';
 import 'package:xml2json/xml2json.dart';
@@ -64,6 +64,17 @@ class AwsS3ClientExtension {
     final response = await _client.put(request.uri, headers: request.headers);
     _checkResponseError(response);
     return CopyObjectResult.fromJsonParker(_parseS3Response(response.body));
+  }
+
+  Uri presignedUrlToReadObject({
+    required String key,
+    int expiresInSeconds = 900,
+  }) {
+    return _awsS3RequestBuilder.presignedUrl(
+      key: key,
+      method: "GET",
+      expiresInSeconds: expiresInSeconds,
+    );
   }
 
   /// List objects in an S3 bucket

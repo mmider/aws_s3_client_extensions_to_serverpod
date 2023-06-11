@@ -8,5 +8,5 @@ export 'src/classes/prefix/prefix.dart';
 
 export 'src/aws_s3_client_extension.dart';
 // export 'src/aws_s3_request_builder.dart';
-export 'src/exceptions.dart';
+export 'src/exceptions/s3_exceptions.dart';
 // export 'src/utils.dart';
